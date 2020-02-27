@@ -4,17 +4,19 @@ import java.util.*;
 import es.uned.master.java.basico.*;
 
 public class Kwic {
-	private Set<TituloKwic> noclaves;
-	private Map<TituloKwic,Set<String>> kwic;
+	private Set<TituloKwic> noclaves; // conjunto de objetos TituloKwic donde almacenar las palabras no claves
+	private Map<TituloKwic,Set<String>> kwic; // map para almacenar las palabras claves y las frases asociadas a dicha palabra clave
 
 	//Inicializo la estructura
 	public Kwic(){
-		this.noclaves= new TreeSet();
-		this.kwic= new TreeMap();
+		this.noclaves= new TreeSet(); // creamos un TreeSet de manera que el conjunto de palabras no claves esten ordenadas alfabeticamente
+		this.kwic= new TreeMap(); // kwic es una estructura map ordenada alfabeticamente por ello la creamos como TreeMap
 	}
 
-/**
- * *Esta pÃ¡rte se tratarÃ¡ exclusivamente las noclaves
+/*
+ * Esta parte sólo trata las palabras no claves
+ * parsea la cadena noclaves de manera que va cogiendo e introduciendo en noclaves aquellas palabras
+ * que estan separadas por un espacio en blanco o un coma.
  */
 	public void computaNoClaves(String noclaves){
 		StringTokenizer strk= new StringTokenizer(noclaves," ,");
@@ -25,7 +27,7 @@ public class Kwic {
 	}
 
 /*
- * Esta parte se tratarÃ¡ de kwic usando las noclaves como consulta
+ * Esta parte se trataría de kwic usando las noclaves como consulta
  */
 	// Tu solo vales para cuando una palabra SEA INDICE
 	// Se utiliza con el compunta que recibe un String
@@ -69,6 +71,12 @@ public class Kwic {
 			}
 		}
 	}
+	
+	/* 
+	 * Procedimiento para escribir las palabras no claves, primero muestra la cadena "Palabras no claves"
+	 * seguidamente crea un interador sobre las palabras no claves y va concatenando las palabra no claves
+	 * devuelve las palabras no claves concatenadas
+	 */
 		private String escribeNoClaves(){
 			String str="Palabras no claves: ";
 			Iterator<TituloKwic> it = this.noclaves.iterator();
@@ -85,6 +93,14 @@ public class Kwic {
 				}
 				return str;
 			}
+			
+	 /*
+	  * Procedimiento para escribir el indice kwick
+	  * primeramente prepara un cadena con el valor "--INDICE--" salto de línea
+	  * Crea un interador sobre el map del kwick y va concatenando las claves del map y
+	  * haciendo una llamada al procedimiento anterior escribekwick(Set<string>) 
+	  * para concatenar los valores de la claves , es decir las frases asociadas a la palabra clave
+	  */
 		private String escribeKwic(){
 			String str="--INDICE--\n";
 			Iterator<Map.Entry<TituloKwic,Set<String>>> it= this.kwic.entrySet().iterator();
@@ -96,7 +112,8 @@ public class Kwic {
 			}
 			return str;
 		}
- // MÃ©todo para imprimir
+ // Método para imprimir que llama a los metodos anteriores escribeNoClaves() que pone por pantalla las palabras no claves
+ // concatena seguidamente el índice de palabras claves con sus frases asociadadas donde aparece la palabra clave
  public String toString(){
 	 String str="";
 	 str+= this.escribeNoClaves();

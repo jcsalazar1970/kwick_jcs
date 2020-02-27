@@ -13,7 +13,17 @@
           <source>1.8</source>
           <target>1.8</target>
         </configuration>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/junit/junit -->
+             <dependency>
+               <groupId>junit</groupId>
+                 <artifactId>junit</artifactId>
+                 <version>4.13</version>
+                 <scope>test</scope>
+              </dependency>
+        </dependencies>
       </plugin>
     </plugins>
+
   </build>
 </project>
