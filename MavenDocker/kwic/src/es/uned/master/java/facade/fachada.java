@@ -39,4 +39,19 @@ public class fachada {
 		
 		System.out.println("Kwic:"+this.k.toString());
 	}
+	
+	public String imprimirstring() {
+		
+		return this.k.toString();
+	}
+
+	public Kwic getK() {
+		return k;
+	}
+
+	public void setK(Kwic k) {
+		this.k = k;
+	}
+	
+	
 }
