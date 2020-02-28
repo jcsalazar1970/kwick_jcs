@@ -5,6 +5,7 @@ import java.util.Set;
 
 import es.uned.master.java.basico.*;
 import es.uned.master.java.coleccion.*;
+import es.uned.master.java.facade.*;
 
 /*programa kwick modificado introduciendo la entrada de palabras no claves y frases desde fichero para hacerlo más dinámico
  * programador : juan carlos salazar caballero
@@ -16,7 +17,8 @@ import es.uned.master.java.coleccion.*;
 
 public class Driver {
 	public static void main(String[] arg){
-		Kwic kwic= new Kwic();
+		fachada f;
+	//	Kwic kwic= new Kwic();
 	// paths desde donde coger las palabras no claves y frases desde fichero
 	// comentamos la entradas de noclaves y frases[] ya que la entrada la realizamos desde fichero
 		String nombrefichero_noclave = "C:\\kwick\\fichero_cadenas_no_claves.txt";
@@ -78,28 +80,9 @@ public class Driver {
 			System.out.println("Excepcion leyendo fichero" + nombrefichero_frases + ": " + e);
 		}
 		
-		/*
-		 * procedimiento para introducir en private Set<TituloKwic> noclaves;
-		 * las palabras no claves, mediante un parseo con la clase tokenizer de palabras
-		 * separada por espacios o comas, esto introduce en un conjunto de objetos TituloKwi las
-		 * palabras no claves
-		 */
-		kwic.computaNoClaves(noclaves);
-
-		/*
-		 * bucle sobre el arraylist frases que contiene todas las frases a procesar, dichas se han obtenido previamente
-		 * desde fichero, codigo anterior
-		 * el bucle va recorriendo el arraylist frases, según su tamaño, de ahí 'i<frases.size()'
-		 * como condición de recorrido
-		 * así llama al metodo 'kwick.computaIndice(con la frase a procesar)'
-		 * 
-		 */
-		for (int i=0; i<frases.size();i++){
-			kwic.computaIndice(frases.get(i));
-			
-		}
-
-		System.out.println("Kwic:"+kwic.toString());
+		f = new fachada(noclaves,frases);
+		f.imprimir();
+		
 		
 	}
 }
