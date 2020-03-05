@@ -256,67 +256,53 @@ Utilizaremos dos métodos privados:i
 
 ```
 public String toString(){
-        String cadFinal = "";
-        cadFinal += imprimirNoClaves();
-        cadFinal += imprimirGlosario();
-        return cadFinal;
-    }
+	 String str="";
+	 str+= this.escribeNoClaves();
+	 str+= this.escribeKwic();
+	 return str;
+ }
 ```
+/* 
+	 * Procedimiento para escribir las palabras no claves, primero muestra la cadena "Palabras no claves"
+	 * seguidamente crea un interador sobre las palabras no claves y va concatenando las palabra no claves
+	 * devuelve las palabras no claves concatenadas
+	 */
+		private String escribeNoClaves(){
+			String str="Palabras no claves: ";
+			Iterator<TituloKwic> it = this.noclaves.iterator();
+			while (it.hasNext()){
+				str+= it.next().toString()+", ";
+			}
+			return str;
+		}
+			private String escribeKwic(Set<String> s){
+				String str="";
+				Iterator<String> it= s.iterator();
+				while (it.hasNext()){
+					str+= "\t"+it.next()+"\n";
+				}
+				return str;
+			}
+			
+	 /*
+	  * Procedimiento para escribir el indice kwick
+	  * primeramente prepara un cadena con el valor "--INDICE--" salto de línea
+	  * Crea un interador sobre el map del kwick y va concatenando las claves del map y
+	  * haciendo una llamada al procedimiento anterior escribekwick(Set<string>) 
+	  * para concatenar los valores de la claves , es decir las frases asociadas a la palabra clave
+	  */
+		private String escribeKwic(){
+			String str="--INDICE--\n";
+			Iterator<Map.Entry<TituloKwic,Set<String>>> it= this.kwic.entrySet().iterator();
 
-  * Método privado que me imprime el conjunto de las palabras no significativas. Este método será utilizado por `toString()`.
-	 * Utilizo el iterador de conjuntos para recorrerlo e imprimirlo.
-	 * Mientras halla elementos en el conjunto, imprime elementos
-	 * Nos devuelve los elementos imprimidos.
-
-```
-private String imprimirNoClaves(){
-        String cadNoClaves = "N O    C L A V E S: "; //inicializo la cadena
-
-        Iterator<TituloKWIC> itNoClaves = this.noClaves.iterator();
-        while (itNoClaves.hasNext()){
-            cadNoClaves += itNoClaves.next().toString() + ", ";
-        }
-        return cadNoClaves;
-    }
-```
-
-  * Utilizo un método privado que me imprime la estructura `Map<Indice,conjunto de frases>`. Este método será utilizado por `toString()`.
-     * Como `map` no tiene iterator tengo que cogerlo de `map.Entry`.
-     * Mientras halla elementos en mi estructura, meto el indice
-     * Por cada indice llamo a un método que me recorrerá el conjunto de cada índice
-     * El método me devolverá el indice con su conjunto.
-
-```
-private String imprimirGlosario(){
-        String cadGlosario = "\n"+"\n"+"         G L O S A R I O    "+"\n";
-      
-        Iterator<Map.Entry<TituloKWIC,Set<String>>>itGlosario = this.glosario.entrySet().iterator();
-        while (itGlosario.hasNext()){
-            Map.Entry<TituloKWIC,Set<String>> me = itGlosario.next();
-            cadGlosario +="\n"+ me.getKey()+"\n"+"\n";
-            cadGlosario += imprimirGlosario(me.getValue());
-        }
-        return cadGlosario;
-    }
-```
-
-Utilizo un método que me imprime el conjunto de frases. Este método será utilizado por
-el método `imprimirGlosario()`.Hago lo mismo que hice con el conjunto formado por palabras no significativas.
-    * Inicializo la cadena.
-    * Creo el iterador.
-    * Mientras halla elementos, imprimo elementos.
-    * Devuelvo los elementos del conjunto.
-
-```
-private String imprimirGlosario(Set<String> s){
-        
-        String cjFrases = "";
-        Iterator itCjFrases = s.iterator();
-        while (itCjFrases.hasNext()){
-            cjFrases += "\t" + itCjFrases.next()+ "\n";
-        }
-        return cjFrases;
-    }
+			while (it.hasNext()){
+				Map.Entry<TituloKwic,Set<String>> mp = it.next();
+				str+= mp.getKey()+"\n";
+				str+= escribeKwic(mp.getValue());
+			}
+			return str;
+		}
+  
 ```
 
 #### KwicException
