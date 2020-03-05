@@ -199,18 +199,24 @@ Utilizo el `StringTokenizer` para coger las palabras significativas que me valdr
   * Si no es una palabra no significativa, significa que voy bien, lo que tengo es una palabra válida en este caso. En este caso, me voy a un método privado que ahora comentaremos.
 
 ```
-public void generarFrases(String frase){
-        StringTokenizer st = new StringTokenizer(frase);
+public void computaIndice(String frase){
+		//Creo un Tokenizer para poder extraer palaba a palabra
+		StringTokenizer strk= new StringTokenizer(frase," ,");
 
-        while (st.hasMoreTokens()){
-            TituloKWIC palabra = (new TituloKWIC(st.nextToken()));
-            if (!noClaves.contains(palabra)){
-                //método privado
-                frases(palabra,frase);
-            }
+		while (strk.hasMoreTokens()){
+			// Primer paso para extraer la palabra de la frase
+			TituloKwic palabra= new TituloKwic(strk.nextToken());
 
-        }
-    }
+			// Segundo Detectar si esa palabra es indice o no ->
+			// Si la palabra es NOCLAVE no computa nada ...no se hace me voy a la bartola ...que estoy agusto
+			// Dame una cerveza
+			if (!(this.noclaves.contains(palabra))){
+				// Tercer paso -solamente para las indice- incluirlo en el kwic
+				// Ole ya llegao
+				this.computaIndice(palabra, frase);
+			}
+		}
+	}
 ```
 
 Aqui tengo mi método private, que se va a llamar frases, lo único que ahora se recibe un `TituloKWIC` y un `String` que será la frase a introducir.
