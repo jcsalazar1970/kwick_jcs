@@ -172,13 +172,13 @@ Esta parte del codigo tratará exclusivamente las **noClaves**. Que metan una es
   * Mientras halla elementos,lo introduzco en mi conjunto.
 
 ```
-public void palabrasNoSignificativas(String pns){
-        StringTokenizer st = new StringTokenizer(pns," ,:;");
-        while (st.hasMoreTokens()){
-                noClaves.add(new TituloKWIC(st.nextToken()));
-        }
+public void computaNoClaves(String noclaves){
+		StringTokenizer strk= new StringTokenizer(noclaves," ,");
 
-    }
+		while (strk.hasMoreTokens()){
+			this.noclaves.add(new TituloKwic(strk.nextToken()));
+		}
+	}
 ```
 
 #### generarFrases(String)
