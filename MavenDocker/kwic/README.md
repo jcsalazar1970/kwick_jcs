@@ -120,7 +120,27 @@ public KWIC(){
          glosario = new TreeMap();
     }
 ```
+#### entrada palabras no clave desde fichero
 
+Esta parte del código representa como se obtienen la entrada de palabras no claves desde fichero:
+
+try {
+			FileReader fr = new FileReader(nombrefichero_noclave);
+			BufferedReader br = new BufferedReader(fr);
+			String linea;
+			while((linea = br.readLine()) != null) {
+			//	System.out.println(linea);
+				noclaves += linea ;
+				
+			}
+				
+			fr.close();
+			
+		}catch(Exception e) {
+			System.out.println("Excepcion leyendo fichero" + nombrefichero_noclave + ": " + e);
+		}
+		
+		
 #### palabrasNoSignificativas(String)
 
 Esta parte del codigo tratará exclusivamente las **noClaves**. Que metan una estructura de String y yo computarla, recibiendo el `String` noclaves.
