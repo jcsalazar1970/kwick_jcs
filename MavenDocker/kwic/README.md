@@ -122,6 +122,15 @@ public KWIC(){
 ```
 #### entrada palabras no clave desde fichero
 
+introducimos para tener un código más dinámico la entrada al programa desde fichero, palabras no claves como
+las frases a procesar, para ello establecemos los path de los ficheros que tendrán las palabras no claves como las frases
+separadas por salto de línea.
+
+```
+                String nombrefichero_noclave = "C:\\kwick\\fichero_cadenas_no_claves.txt";
+		String nombrefichero_frases = "C:\\kwick\\ficherofrases.txt";
+```
+
 Esta parte del código representa como se obtienen la entrada de palabras no claves desde fichero:
 ```
 try {
