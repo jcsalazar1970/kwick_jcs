@@ -318,4 +318,8 @@ public String toString(){
 
 #### fachada
    * Código para implementar el patrón facade
- 
+
+#### Test Unitarios
+##### kwicktestigual
+   * prueba unitaria para comprobar que ocurre cuando las frases son identicamente igual a las palabras no clave
+   
