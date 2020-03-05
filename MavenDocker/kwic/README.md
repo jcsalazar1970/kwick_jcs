@@ -254,14 +254,14 @@ Utilizaremos dos métodos privados:i
   *`imprimirGlosario()` --> para imprimir por pantalla la estructura `map`.
     * `clave (índice)` y valor (conjunto de frases relacionadas y con el índice sustituido por `...`)
 
-```
+
 public String toString(){
 	 String str="";
 	 str+= this.escribeNoClaves();
 	 str+= this.escribeKwic();
 	 return str;
  }
-```
+ 
 /* 
 	 * Procedimiento para escribir las palabras no claves, primero muestra la cadena "Palabras no claves"
 	 * seguidamente crea un interador sobre las palabras no claves y va concatenando las palabra no claves
