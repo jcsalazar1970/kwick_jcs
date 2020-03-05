@@ -313,4 +313,7 @@ public String toString(){
   
 #### driverKwic
    * Código del `main(String [])`.
+
+#### fachada
+   * Código para implementar el patrón facade
  
