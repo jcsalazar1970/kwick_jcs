@@ -227,16 +227,23 @@ Aqui tengo mi método private, que se va a llamar frases, lo único que ahora se
    5. Añado `replace` para que me sustituya en la frase el indice por `...`. Este método está en `codigoTituloKWIC`.
 
 ```
-private void frases(TituloKWIC indice,String frase){
-        Set<String> s = new TreeSet<String>();
-      
-        if (glosario.containsKey(indice)){
-            s = glosario.get(indice);
-        }
-        s.add(indice.replace(frase));
-        glosario.put(indice,s);
+private void computaIndice(TituloKwic palabra, String frase){
+		//Necesariamente se aÃ±ade al map.
+		// Si esta -> Solo aÃ±ado la frase en el Set
+		// Si no estÃ¡ -> AdemÃ¡s de la frase el Ã­ndice
+		Set<String> frases= new TreeSet();
+		if (this.kwic.containsKey(palabra)){
+			// Que lo contiene
+			 //CariÃ±o dame ese valor de la palabra
+			frases= this.kwic.get(palabra);
+		}
+		frases.add(palabra.reemplaza(frase));
+		//frases.add(TituloKwic.reemplaza(palabra, frase));
 
-    }
+		// AÃ±adiro al map como nuevo y machaco el que habÃ­a.
+		this.kwic.put(palabra, frases);
+
+	}
 
 ```
 
