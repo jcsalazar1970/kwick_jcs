@@ -322,4 +322,6 @@ public String toString(){
 #### Test Unitarios
 ##### kwicktestigual
    * prueba unitaria para comprobar que ocurre cuando las frases son identicamente igual a las palabras no clave
+##### kwickvacio
+   * prueba unitaria para ver que ocurre si el contenido de las frases es null, al correr la prueba unitaria falla y no funciona
    
