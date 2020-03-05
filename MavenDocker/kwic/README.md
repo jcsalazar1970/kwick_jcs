@@ -250,9 +250,9 @@ private void computaIndice(TituloKwic palabra, String frase){
 #### Método toString():String
 
 Utilizaremos dos métodos privados:i
-  *`imprimirNoClaves()` --> para imprimir por pantalla el conjunto de claves.
-  *`imprimirGlosario()` --> para imprimir por pantalla la estructura `map`.
-    * `clave (índice)` y valor (conjunto de frases relacionadas y con el índice sustituido por `...`)
+  `imprimirNoClaves()` --> para imprimir por pantalla el conjunto de claves.
+   `imprimirKwick()` --> para imprimir por pantalla la estructura `map`.
+   `clave (índice)` y valor (conjunto de frases relacionadas y con el índice sustituido por `...`)
 ```
 
 public String toString(){
@@ -262,11 +262,12 @@ public String toString(){
 	 return str;
  }
  
-/* 
-	 * Procedimiento para escribir las palabras no claves, primero muestra la cadena "Palabras no claves"
-	 * seguidamente crea un interador sobre las palabras no claves y va concatenando las palabra no claves
-	 * devuelve las palabras no claves concatenadas
-	 */
+```
+	 Procedimiento para escribir las palabras no claves, primero muestra la cadena "Palabras no claves"
+	 seguidamente crea un interador sobre las palabras no claves y va concatenando las palabra no claves
+	 devuelve las palabras no claves concatenadas
+	 
+```
 		private String escribeNoClaves(){
 			String str="Palabras no claves: ";
 			Iterator<TituloKwic> it = this.noclaves.iterator();
@@ -283,14 +284,15 @@ public String toString(){
 				}
 				return str;
 			}
-			
-	 /*
-	  * Procedimiento para escribir el indice kwick
-	  * primeramente prepara un cadena con el valor "--INDICE--" salto de línea
-	  * Crea un interador sobre el map del kwick y va concatenando las claves del map y
-	  * haciendo una llamada al procedimiento anterior escribekwick(Set<string>) 
-	  * para concatenar los valores de la claves , es decir las frases asociadas a la palabra clave
-	  */
+```			
+	 
+	   Procedimiento para escribir el indice kwick
+	   primeramente prepara un cadena con el valor "--INDICE--" salto de línea
+	   Crea un interador sobre el map del kwick y va concatenando las claves del map y
+	   haciendo una llamada al procedimiento anterior escribekwick(Set<string>) 
+	   para concatenar los valores de la claves , es decir las frases asociadas a la palabra clave
+	  
+```
 		private String escribeKwic(){
 			String str="--INDICE--\n";
 			Iterator<Map.Entry<TituloKwic,Set<String>>> it= this.kwic.entrySet().iterator();
