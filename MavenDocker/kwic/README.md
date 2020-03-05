@@ -253,7 +253,7 @@ Utilizaremos dos métodos privados:i
   *`imprimirNoClaves()` --> para imprimir por pantalla el conjunto de claves.
   *`imprimirGlosario()` --> para imprimir por pantalla la estructura `map`.
     * `clave (índice)` y valor (conjunto de frases relacionadas y con el índice sustituido por `...`)
-
+```
 
 public String toString(){
 	 String str="";
