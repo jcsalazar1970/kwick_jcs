@@ -141,6 +141,29 @@ try {
 		}
 		
 ````		
+
+### Entrada de frases desde fichero
+
+```
+try {
+			FileReader frf = new FileReader(nombrefichero_frases);
+			BufferedReader brf = new BufferedReader(frf);
+			String linea;
+			int i=0;
+			while((linea = brf.readLine()) != null) {
+			
+				frases.add(linea);
+			
+				i++;
+				
+			}
+				
+			frf.close();
+			
+		}catch(Exception e) {
+			System.out.println("Excepcion leyendo fichero" + nombrefichero_frases + ": " + e);
+		}
+```
 #### palabrasNoSignificativas(String)
 
 Esta parte del codigo tratará exclusivamente las **noClaves**. Que metan una estructura de String y yo computarla, recibiendo el `String` noclaves.
